@@ -14,12 +14,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.8
-      parallelism: 1
       shell: /bin/bash
-
-  myjob:
-    docker:
-      - image: "circleci/node:9.6.1"
     steps:
       - sayhello:
           to: "James"
