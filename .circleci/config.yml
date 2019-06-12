@@ -1,5 +1,25 @@
 version: 2.1
+
+commands:
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
+
 jobs:
   build:
     docker:
       - image: circleci/golang:1.8
+      parallelism: 1
+      shell: /bin/bash
+
+  myjob:
+    docker:
+      - image: "circleci/node:9.6.1"
+    steps:
+      - sayhello:
+          to: "James"
